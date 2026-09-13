@@ -151,9 +151,11 @@ function vitePluginManusDebugCollector(): Plugin {
 }
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
+const pagesBase = process.env.GITHUB_ACTIONS ? "/manus/" : "/";
 
 export default defineConfig({
   plugins,
+  base: pagesBase,
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
